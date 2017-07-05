@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Book Form:</h1>
+  <form #f="ngForm">
+    <div>
+      <label for="title">Title</label>
+      <input type="text" class="form-control" required [(ngModel)]="model.title" name="title">
+    </div>
+    <div>
+      <label for="author">Author</label>
+      <input type="text" class="form-control" required [(ngModel)]="model.author" name="author">
+    </div>
+    <div>
+      <label for="url">URL</label>
+      <input type="text" class="form-control" required [(ngModel)]="model.url" name="url">
+    </div>
+    <ul>
+      <li *ngFor="let a of model.titles; let i = index;">
+        {{i}}
+        <input type="text" class="form-control" required [(ngModel)]="a.title" name="title{{i}}">
+      </li>
+    </ul>
+    <button type="submit" class="btn btn-default" (click)="submit(f)">Submit</button>
+  </form>
+  <div>
+    <h2>Model:</h2>
+    {{ f.value | json }}
+  </div>
+</div>
